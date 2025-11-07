@@ -20,8 +20,20 @@ import LandingPage from './pages/LandingPage';
 import NotFound from './pages/NotFound';
 
 // Dashboard Pages
-import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminDashboard from './pages/admin/Dashboard';
+import AdminUsers from './pages/admin/Users';
+import AdminCourses from './pages/admin/Courses';
+import AdminCreateCourse from './pages/admin/CreateCourse';
+import AdminCompanies from './pages/admin/Companies';
+import AdminReports from './pages/admin/Reports';
+import AdminSettings from './pages/admin/Settings';
+import AdminAttendance from './pages/admin/Attendance';
+import CertificateManagement from './pages/admin/CertificateManagement';
 import CandidateDashboard from './pages/candidate/Dashboard';
+import CandidateCourses from './pages/candidate/Courses';
+import CandidateCourseDetails from './pages/candidate/CourseDetails';
+import CandidateCalendar from './pages/candidate/Calendar';
+import CandidateNotifications from './pages/candidate/Notifications';
 import TrainerDashboard from './pages/trainer/Dashboard';
 import AgentDashboard from './pages/agent/Dashboard';
 import BrokerDashboard from './pages/broker/Dashboard';
@@ -273,7 +285,19 @@ const App = () => {
           element={
             <ProtectedRoute allowedRoles={[ROLES.ADMIN]}>
               <AppLayout>
-                <AdminDashboard />
+                <Routes>
+                  <Route path="dashboard" element={<AdminDashboard />} />
+                  <Route path="users" element={<AdminUsers />} />
+                  <Route path="courses" element={<AdminCourses />} />
+                  <Route path="courses/new" element={<AdminCreateCourse />} />
+                  <Route path="courses/:id/edit" element={<AdminCreateCourse />} />
+                  <Route path="attendance" element={<AdminAttendance />} />
+                  <Route path="certificates" element={<CertificateManagement />} />
+                  <Route path="companies" element={<AdminCompanies />} />
+                  <Route path="reports" element={<AdminReports />} />
+                  <Route path="settings" element={<AdminSettings />} />
+                  <Route index element={<Navigate to="dashboard" replace />} />
+                </Routes>
               </AppLayout>
             </ProtectedRoute>
           }
@@ -284,7 +308,14 @@ const App = () => {
           element={
             <ProtectedRoute allowedRoles={[ROLES.CANDIDATE]}>
               <AppLayout>
-                <CandidateDashboard />
+                <Routes>
+                  <Route path="dashboard" element={<CandidateDashboard />} />
+                  <Route path="courses" element={<CandidateCourses />} />
+                  <Route path="courses/:courseId" element={<CandidateCourseDetails />} />
+                  <Route path="calendar" element={<CandidateCalendar />} />
+                  <Route path="notifications" element={<CandidateNotifications />} />
+                  <Route index element={<Navigate to="dashboard" replace />} />
+                </Routes>
               </AppLayout>
             </ProtectedRoute>
           }

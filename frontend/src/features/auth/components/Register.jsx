@@ -44,7 +44,7 @@ const Register = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    userType: 'candidate',
+    userType: 'Candidate',
     showPassword: false,
     showConfirmPassword: false,
   });
@@ -118,7 +118,7 @@ const Register = () => {
         lastName: formData.lastName,
         email: formData.email,
         password: formData.password,
-        userType: formData.userType,
+        role: formData.userType,
       })).unwrap();
       
       // Redirect to verification or dashboard based on your flow
@@ -274,9 +274,12 @@ const Register = () => {
                     label="I am a"
                     onChange={handleChange}
                   >
-                    <MenuItem value="candidate">Job Seeker</MenuItem>
-                    <MenuItem value="employer">Employer</MenuItem>
-                    <MenuItem value="training">Training Provider</MenuItem>
+                    <MenuItem value="Admin">Admin</MenuItem>
+                    <MenuItem value="Trainer">Trainer</MenuItem>
+                    <MenuItem value="Candidate">Candidate</MenuItem>
+                    <MenuItem value="Agent">Agent</MenuItem>
+                    <MenuItem value="Broker">Broker</MenuItem>
+                    <MenuItem value="Recruiter">Recruiter</MenuItem>
                   </Select>
                   {errors.userType && (
                     <FormHelperText>{errors.userType}</FormHelperText>

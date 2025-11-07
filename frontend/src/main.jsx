@@ -6,9 +6,8 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './app/store';
 
-// Import theme provider and style utilities
+// Import theme provider
 import ThemeProvider from './providers/ThemeProvider.jsx';
-import { loadAllStyles, monitorStylePerformance } from './utils/styleLoader.js';
 import { theme } from './theme/theme.js';
 
 // Import main app component
@@ -18,8 +17,7 @@ import App from './App.jsx';
 import './index.css';
 
 /**
- * Enhanced App Wrapper with comprehensive style loading
- * Ensures all themes and styles are loaded before app initialization
+ * Enhanced App Wrapper
  */
 const AppWrapper = () => {
   return (
@@ -46,7 +44,7 @@ const AppWrapper = () => {
 };
 
 /**
- * Application initialization with style pre-loading
+ * Application initialization
  */
 const initializeApp = async () => {
   console.log('🚀 Initializing UMSL Labor Mobility Platform...');
@@ -56,15 +54,8 @@ const initializeApp = async () => {
     console.log('🎭 Running in demo mode with mock data');
   }
 
-  // Start performance monitoring in development
-  if (import.meta.env.DEV) {
-    monitorStylePerformance();
-  }
-
   try {
-    // Ensure all styles are loaded before rendering
-    console.log('📦 Loading theme and styles...');
-    await loadAllStyles(theme);
+    console.log('📦 Loading application...');
 
     // Get root element
     const rootElement = document.getElementById('root');
@@ -123,7 +114,7 @@ const initializeApp = async () => {
             <button
               onclick="window.location.reload()"
               style="
-                background-color: #0077B6;
+                background-color: #3B82F6;
                 color: white;
                 border: none;
                 padding: 12px 24px;
